@@ -1,0 +1,7 @@
+out/
+.cache/
+example/build/out/
+example/build/build_config
+example/build/compile_commands.json
+example/build/libconfig.so
+compile_commands.json

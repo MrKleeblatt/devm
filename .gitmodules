@@ -1,0 +1,3 @@
+[submodule "dep/x-watcher"]
+	path = dep/x-watcher
+	url = git@github.com:nikp123/x-watcher.git
