@@ -44,11 +44,11 @@ char* str_concat(char* str1, char* str2){
 char* arr_to_string(char** arr, char* delimiter){
 	if(arr == nullptr) return nullptr;
 	size_t result_len = 0;
-	for(size_t i = 0; i < arr_count(arr); ++i) result_len += strlen(arr[i]);
+	arr_foreach(arr, i) result_len += strlen(arr[i]);
 	if(result_len == 0) return nullptr;
 	result_len += strlen(delimiter) * (arr_count(arr)-1);
 	char* result = calloc(result_len + 1, sizeof *result);
-	for(size_t i = 0; i < arr_count(arr); ++i) {
+	arr_foreach(arr, i){
 		strcat(result, arr[i]);
 		if(i == arr_count(arr)-1) break;
 		strcat(result, delimiter);

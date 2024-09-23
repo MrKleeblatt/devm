@@ -60,7 +60,7 @@ void generate_command(config conf, source* src){
 char* generate_json(config conf){
 	auto json = json_object_new_array();
 	// make command for every source file for compilation
-	for(size_t i = 0; i < arr_count(conf.sources); ++i){
+	arr_foreach(conf.sources, i){
 		auto src = &conf.sources[i];
 		auto object = json_object_new_object();
 		generate_command(conf, src);
