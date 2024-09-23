@@ -18,7 +18,7 @@ source* devm_source_dir(char* directory, char* file_extension){
 }
 
 source* devm_source_dir_filter(char* directory, bool(*filter)(char* filename, void* context), void* context){
-	source* result;
+	source* result = nullptr;
 	arr_init(result);
 	// open directory
 	DIR* dir = opendir(directory);
@@ -34,7 +34,7 @@ source* devm_source_dir_filter(char* directory, bool(*filter)(char* filename, vo
 		if(!filter(entry->d_name, context)) continue;
 		char* relative_name = str_concat(directory, entry->d_name);
 		source src = devm_source(relative_name);
-		src.must_free = true;
+		src._must_free = true;
 		arr_add(result, src);
 	}
 	return result;
