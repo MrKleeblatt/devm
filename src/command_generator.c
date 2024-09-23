@@ -27,11 +27,11 @@ char* escape_path(char* path){
 	return escaped;
 }
 
-char* generate_command(config conf, source src){
+void generate_command(config conf, source* src){
 	String general_flags = arr_to_string(conf.general_flags, " ");
 	String compile_flags = arr_to_string(conf.compile_flags, " ");
-	String extra_flags = arr_to_string(src.extra_flags, " ");
-	String source_file_path = get_source_path(conf, src);
+	String extra_flags = arr_to_string(src->extra_flags, " ");
+	String source_file_path = get_source_path(conf, *src);
 	String object_escaped_name = escape_path(source_file_path);
 
 	StringBuilder builder = {0};
@@ -54,20 +54,20 @@ char* generate_command(config conf, source src){
 	string_builder_append(&builder, " ");
 	string_builder_append(&builder, source_file_path);
 
-	return string_builder_build(builder);
+	src->_command = string_builder_build(builder);
 }
 
 char* generate_json(config conf){
 	auto json = json_object_new_array();
 	// make command for every source file for compilation
 	for(size_t i = 0; i < arr_count(conf.sources); ++i){
-		auto src = conf.sources[i];
+		auto src = &conf.sources[i];
 		auto object = json_object_new_object();
-		String command = generate_command(conf, src);
+		generate_command(conf, src);
 		// TODO: ask directory in config
 		json_object_object_add(object, "directory", json_object_new_string(conf.cwd));
-		json_object_object_add(object, "file", json_object_new_string(src.file));
-		json_object_object_add(object, "command", json_object_new_string(command));
+		json_object_object_add(object, "file", json_object_new_string(src->file));
+		json_object_object_add(object, "command", json_object_new_string(src->_command));
 		json_object_array_add(json, object);
 	}
 

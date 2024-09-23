@@ -19,6 +19,11 @@ inline void cleanup_config(config* conf){
 	arr_free(conf->compile_flags);
 	arr_free(conf->link_flags);
 	arr_free(conf->general_flags);
+	arr_foreach(conf->sources, i){
+		auto src = conf->sources[i];
+		if(src._must_free) free(src.file);
+		free(src._command);
+	}
 	arr_free(conf->sources);
 	conf->compile_flags = nullptr;
 	conf->link_flags = nullptr;
