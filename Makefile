@@ -12,7 +12,7 @@ LINK_FLAGS=-lm -Wl,--export-dynamic -lcurl -ljson-c
 
 SOURCES=$(shell find ./src/ -name '*.c')
 OBJECTS=$(addprefix ./out/objects/,$(SOURCES:./src/%.c=%.o))
-HEADER_DIR=./dep/
+INCLUDES=-I./dep/ -I./src/include/
 STATIC_LIBS=
 
 
@@ -29,7 +29,7 @@ link: $(OBJECTS)
 
 # compile
 ./out/objects/%.o: ./src/%.c
-	$(CC) $(COMPILE_FLAGS) -I$(HEADER_DIR) -c -o $@ $<
+	$(CC) $(COMPILE_FLAGS) $(INCLUDES) -c -o $@ $<
 
 run:
 	@echo

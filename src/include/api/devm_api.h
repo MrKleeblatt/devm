@@ -23,7 +23,8 @@ typedef enum {
 typedef struct [[gnu::packed]] {
 	char* file;
 	char** extra_flags;
-	bool must_free;
+	char* _command;
+	bool _must_free;
 } source;
 
 

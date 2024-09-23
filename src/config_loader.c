@@ -1,6 +1,6 @@
 #include "config_loader.h"
 #include "cleanup.h"
-#include "x-watcher/array.h"
+#include "api/array.h"
 #include <dlfcn.h>
 #include <errno.h>
 #include <stdlib.h>

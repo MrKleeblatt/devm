@@ -1,5 +1,5 @@
 #include "cleanup.h"
-#include "x-watcher/array.h"
+#include "api/array.h"
 #include <dlfcn.h>
 #include <stdlib.h>
 

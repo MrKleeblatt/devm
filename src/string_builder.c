@@ -1,5 +1,5 @@
 #include "string_builder.h"
-#include "x-watcher/array.h"
+#include "api/array.h"
 #include <string.h>
 
 void string_builder_append(string_builder* builder, char* section){

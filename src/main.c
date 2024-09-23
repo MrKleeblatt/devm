@@ -1,5 +1,5 @@
 #include "command_generator.h"
-#include "devm_api.h"
+#include "api/devm_api.h"
 #include "cli.h"
 #include "cleanup.h"
 #include "config_loader.h"

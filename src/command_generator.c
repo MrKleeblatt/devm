@@ -1,7 +1,7 @@
 #include "command_generator.h"
 #include "cleanup.h"
 #include "string_builder.h"
-#include "x-watcher/array.h"
+#include "api/array.h"
 #include <curl/curl.h>
 #include <string.h>
 #include <json-c/json.h>

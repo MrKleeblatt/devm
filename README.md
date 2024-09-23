@@ -20,7 +20,7 @@ because configuration is written as pure code and compiled to a shared object.
 
 ```c
 #include "devm_api.h"
-#include "x-watcher/array.h"
+#include "array.h"
 
 struct version_s version = {0, 1};
 
