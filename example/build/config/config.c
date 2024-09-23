@@ -1,5 +1,5 @@
 #include "devm_api.h"
-#include "x-watcher/array.h"
+#include "array.h"
 
 struct version_s version = {0, 1};
 

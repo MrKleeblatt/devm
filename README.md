@@ -10,10 +10,11 @@ because configuration is written as pure code and compiled to a shared object.
 
 ```
 .
-└── build/
-    ├── libconfig.so
+└── build
     ├── compile_commands.json
-    └── out/
+    ├── config
+    │   └── libconfig.so
+    └── out
  ```
 
 `libconfig.so` must export the following symbols.
